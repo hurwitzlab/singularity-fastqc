@@ -10,9 +10,10 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     sed -i 's/$/ universe/' /etc/apt/sources.list
     
     #essential stuff
-    apt -y --force-yes install git sudo man vim build-essential 
+    apt -y --force-yes install git sudo man vim build-essential wget
     
     #maybe dont need, add later if do:
-    #curl autoconf libtool wget
+    #curl autoconf libtool 
+    wget https://sourceforge.net/projects/solexaqa/files/latest/download?source=files
 
 %test
