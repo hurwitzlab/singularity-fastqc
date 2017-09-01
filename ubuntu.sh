@@ -12,8 +12,10 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     sed -i 's/$/ universe/' /etc/apt/sources.list
     
     #essential stuff
-    apt -y --force-yes install git sudo man vim build-essential wget unzip \
-        default-jre
+    apt -y --force-yes install git sudo man vim build-essential wget unzip
+
+    touch /etc/init.d/systemd-logind
+    sudo apt -y --force-yes install default-jre
     
     #maybe dont need, add later if do:
     #curl autoconf libtool 
@@ -29,6 +31,3 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     sudo mv FastQC/fastqc /usr/bin
     rm -rf *
 
-%test
-    solexaqa -h
-    fastqc --help
