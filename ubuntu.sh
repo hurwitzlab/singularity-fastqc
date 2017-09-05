@@ -19,15 +19,14 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     
     #maybe dont need, add later if do:
     #curl autoconf libtool 
-    cd ~
+    cd /tmp
     wget https://sourceforge.net/projects/solexaqa/files/latest/download?source=files -O solexa.zip
-    unzip solexa.zip
-    mv Linux_x64/SolexaQA++ /usr/bin/solexaqa
-    rm -rf *
+    sudo unzip solexa.zip -d /media
+    sudo ln -s /media/Linux_x64/SolexaQA++ /usr/bin/solexaqa
 
     wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip -O fastqc.zip
-    sudo unzip fastqc.zip
-    sudo chmod +x FastQC/fastqc
-    sudo mv FastQC/fastqc /usr/bin
-    rm -rf *
+    sudo unzip fastqc.zip -d /media
+    sudo chmod +x /media/FastQC/fastqc
+    sudo ln -s /media/FastQC/fastqc /usr/bin/fastqc
 
+    rm -rf /tmp/*
