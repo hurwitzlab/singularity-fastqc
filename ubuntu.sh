@@ -10,7 +10,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 %post
     echo "Hello from inside the container"
     sed -i 's/$/ universe/' /etc/apt/sources.list
-    
+
     #essential stuff
     apt -y --force-yes install git sudo man vim build-essential wget unzip
 
@@ -30,3 +30,6 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     sudo ln -s /media/FastQC/fastqc /usr/bin/fastqc
 
     rm -rf /tmp/*
+
+    #create a directory to work in
+    mkdir /work
