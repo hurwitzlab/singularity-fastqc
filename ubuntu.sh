@@ -3,7 +3,7 @@ OSVersion: trusty
 MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
 %environment
-    PATH="$HOME/miniconda/bin:$PATH"
+    PATH="/media/miniconda/bin:$PATH"
 
 %runscript
     echo "By default this runs solexaqa, use singularity exec to run fastqc\
@@ -34,13 +34,14 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
     #Miniconda for cutadapt / trimgalore
     #and if trimgalore works better we might just get rid of solexaqa
-    wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O/media/miniconda.sh
-    bash /media/miniconda.sh -b -p $HOME/miniconda
-    PATH="$HOME/miniconda/bin:$PATH"
+    wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+    bash miniconda.sh -b -p /media/miniconda
+    PATH="/media/miniconda/bin:$PATH"
+    conda install -y -f -q -c bioconda xopen
     conda install -y -f -q -c bioconda cutadapt
 
     wget http://www.bioinformatics.babraham.ac.uk/projects/trim_galore/trim_galore_v0.4.4.zip
-    sudo unzip trim_galore_v0.4.4.zip
+    sudo unzip -o trim_galore_v0.4.4.zip
     sudo chmod +x trim_galore
     sudo mv trim_galore /usr/bin
 
@@ -51,8 +52,6 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     rm -rf MacOs_10.7+/
     rm -rf source/
     rm -rf Windows_x64/
-    rm -rf /media/miniconda.sh
-    rm -rf /media/
 
     #create a directory to work in
     mkdir /work
