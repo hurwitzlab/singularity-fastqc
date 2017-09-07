@@ -7,7 +7,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
 %runscript
     echo "By default this runs solexaqa, use singularity exec to run fastqc\
-        or trimgalore"
+        , trim_galore, or cutadapt"
     exec /usr/bin/solexaqa "$@"
 
 %post
