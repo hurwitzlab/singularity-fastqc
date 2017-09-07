@@ -36,6 +36,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #and if trimgalore works better we might just get rid of solexaqa
     wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O/media/miniconda.sh
     bash /media/miniconda.sh -b -p $HOME/miniconda
+    PATH="$HOME/miniconda/bin:$PATH"
     conda install -y -f -q -c bioconda cutadapt
 
     wget http://www.bioinformatics.babraham.ac.uk/projects/trim_galore/trim_galore_v0.4.4.zip
