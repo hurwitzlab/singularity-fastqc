@@ -4,7 +4,8 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
 
 %runscript
-    echo "By default this runs solexaqa, use singularity exec to run fastqc"
+    echo "By default this runs solexaqa, use singularity exec to run fastqc\
+        or trimmomatic"
     exec /usr/bin/solexaqa "$@"
 
 %post
@@ -28,6 +29,9 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     sudo unzip fastqc.zip -d /media
     sudo chmod +x /media/FastQC/fastqc
     sudo ln -s /media/FastQC/fastqc /usr/bin/fastqc
+
+#    wget http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.36.zip
+#    sudo unzip Trimmomatic-0.36.zip -d /media
 
     rm -rf /tmp/*
 
