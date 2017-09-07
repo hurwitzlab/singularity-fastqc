@@ -2,10 +2,12 @@ BootStrap: debootstrap
 OSVersion: trusty
 MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
+%environment
+    PATH="$HOME/miniconda/bin:$PATH"
 
 %runscript
     echo "By default this runs solexaqa, use singularity exec to run fastqc\
-        or trimmomatic"
+        or trimgalore"
     exec /usr/bin/solexaqa "$@"
 
 %post
@@ -30,10 +32,26 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     sudo chmod +x /media/FastQC/fastqc
     sudo ln -s /media/FastQC/fastqc /usr/bin/fastqc
 
-#    wget http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.36.zip
-#    sudo unzip Trimmomatic-0.36.zip -d /media
+    #Miniconda for cutadapt / trimgalore
+    #and if trimgalore works better we might just get rid of solexaqa
+    wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O/media/miniconda.sh
+    bash /media/miniconda.sh -b -p $HOME/miniconda
+    conda install -y -f -q -c bioconda cutadapt
 
+    wget http://www.bioinformatics.babraham.ac.uk/projects/trim_galore/trim_galore_v0.4.4.zip
+    sudo unzip trim_galore_v0.4.4.zip
+    sudo chmod +x trim_galore
+    sudo mv trim_galore /usr/bin
+
+    #cleanup    
+    conda clean -y --all
     rm -rf /tmp/*
+    cd /media
+    rm -rf MacOs_10.7+/
+    rm -rf source/
+    rm -rf Windows_x64/
+    rm -rf /media/miniconda.sh
+    rm -rf /media/
 
     #create a directory to work in
     mkdir /work
