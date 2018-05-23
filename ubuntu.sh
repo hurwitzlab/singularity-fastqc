@@ -23,7 +23,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     #maybe dont need, add later if do:
     #curl autoconf libtool 
     cd /tmp
-    wget https://sourceforge.net/projects/solexaqa/files/latest/download?source=files -O solexa.zip
+    wget --no-check-certificate https://sourceforge.net/projects/solexaqa/files/latest/download?source=files -O solexa.zip
     sudo unzip solexa.zip -d /media
     sudo ln -s /media/Linux_x64/SolexaQA++ /usr/bin/solexaqa
 
@@ -40,7 +40,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     conda install -y -f -q -c bioconda xopen
     conda install -y -f -q -c bioconda cutadapt
 
-    wget http://www.bioinformatics.babraham.ac.uk/projects/trim_galore/trim_galore_v0.4.4.zip
+    wget --no-check-certificate http://www.bioinformatics.babraham.ac.uk/projects/trim_galore/trim_galore_v0.4.4.zip
     sudo unzip -o trim_galore_v0.4.4.zip
     sudo chmod +x trim_galore
     sudo mv trim_galore /usr/bin
@@ -53,12 +53,11 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     rm -rf source/
     rm -rf Windows_x64/
 
-    #create a directory to work in
-    mkdir /work
-
     #so we dont get those stupid perl warnings
     locale-gen en_US.UTF-8
 
     #so we dont get those stupid worning on hpc/pbs
     mkdir /extra
     mkdir /xdisk
+    mkdir /rsgrps
+    mkdir -p /cm/shared
