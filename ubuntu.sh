@@ -27,7 +27,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
     sudo unzip solexa.zip -d /media
     sudo ln -s /media/Linux_x64/SolexaQA++ /usr/bin/solexaqa
 
-    wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip -O fastqc.zip
+    wget --no-check-certificate https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip -O fastqc.zip
     sudo unzip fastqc.zip -d /media
     sudo chmod +x /media/FastQC/fastqc
     sudo ln -s /media/FastQC/fastqc /usr/bin/fastqc
